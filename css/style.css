@@ -7,7 +7,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to bottom, #2c2b2b, #141414);
+    background: #617dfc
 }
 * {
     padding: 0;
@@ -48,16 +48,105 @@ h1,h2,h3,h4,h5,h6,p {
     font-family: 'Circe-Regular';
     src: url(../fonts/Circe-Regular.ttf);
 }
-
+/* Modal */
+.modal--form {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.7);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.2);
+    transition: .3s;
+}
+.modal--form.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.modal--content {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 40px 70px;
+}
+.modal--title {
+    font-family: 'Circe-Bold';
+    font-size: 24px;
+    color: #222;
+    line-height: 22px;
+    padding: 25px 0;
+}
+.modal--txt {
+    font-family: 'Circe-Regular';
+    font-size: 15px;
+    text-align: left;
+}
+.modal--input {
+    font-family: 'Circe-Regular';
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #dad9d9;
+    border-radius: 2px;
+    padding: 3px 5px;
+    margin: 3px 0 20px;
+    transition: .3s;
+}
+.modal--input:hover {
+    border: 1px solid #bbbbbb;
+}
+.modal--input:focus {
+    border: 1px solid #bbbbbb;
+    box-shadow: 0px 0px 5px #bbbbbb;
+    outline: none;
+}
+.modal--input::placeholder {
+    color: #b6afaf;
+}
+.form--btn {
+    font-family: 'Circe-Bold';
+    border: none;
+    background: linear-gradient(to top, #617dfc, #8196f5);
+    padding: 4px 20px;
+    color: #fff;
+    border-radius: 1px;
+    transition: .3s;
+    margin-top: 30px;
+}
+.form--btn:focus {
+    outline: none;
+}
+.form--btn:hover {
+    background: linear-gradient(to top, #8196f5, #617dfc);
+}
+.close--btn {
+    position: absolute;
+    top: -50px;
+    right: -30px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
 /* Главная страница */
-#header {
+#full {
     max-width: 1920px;
-    height: 100vh;
     margin: 0 auto;
+}
+#header {
+    height: 100vh;
     position: relative;
 }
 .header--container {
     padding: 7px 10px;
+    background: #617dfc;
 }
 .logo--cont img {
     width: 20%;
@@ -91,7 +180,7 @@ h1,h2,h3,h4,h5,h6,p {
 .content--desc {
     font-family: 'Circe-Light';
     font-size: 18px;
-    padding-top: 20px;
+    padding-top: 40px;
     color: #fff;
 }
 .get--info--btn {
@@ -111,11 +200,12 @@ h1,h2,h3,h4,h5,h6,p {
 .get--info--btn:focus {
     outline: none;
 }
+.info a:focus {
+    outline: none;
+}
 
 /* О кафедре */
 #about {
-    max-width: 1920px;
-    margin: 0 auto;
     padding: 30px 0;
 }
 .about--title {
@@ -164,12 +254,24 @@ table tbody tr td p {
 
 /* Наши выпускники: */
 #students {
-    max-width: 1920px;
-    margin: 0 auto;
     padding: 30px 0;
 }
 .students--container {
     padding: 0 20px;
+}
+.prepods--slide {
+    margin: 10px;
+}
+.prepods--img {
+    height: 220px;
+    overflow: hidden;
+}
+.prepods--img img {
+    object-fit: fill;
+    width: 100% !important;
+}
+.prepods--slide:focus {
+    outline: none;
 }
 .students--slide {
     margin: 10px;
@@ -181,6 +283,7 @@ table tbody tr td p {
     font-family: 'Circe-Bold';
     font-size: 16px;
     color: #000;
+    line-height: 20px;
     padding: 5px 0 2px;
 }
 .info--txt {
@@ -214,8 +317,6 @@ table tbody tr td p {
 }
 /* Контакты */
 #contacts {
-    max-width: 1920px;
-    margin: 0 auto;
     padding: 30px 0 0;
 }
 .contact--container {
@@ -276,7 +377,7 @@ table tbody tr td p {
 }
 .last--footer {
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #070e18;
 }
 .copyright {
@@ -284,5 +385,45 @@ table tbody tr td p {
     font-size: 16px;
     color: #EEEEEE;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 15px;
+}
+/* Страница о преподавателей */
+#teacher {
+    padding: 30px 0;
+}
+.teacher--img {
+    padding-right: 20px;
+}
+.teacher--name {
+    font-family: 'Circe-Bold';
+    font-size: 26px;
+    color: #000;
+}
+.teaher--prof {
+    font-family: 'Circe-Regular';
+    font-size: 16px;
+    color: #000;
+}
+.teacher--header {
+    padding: 10px 0;
+    border-top: 1px solid #e2e2e2;
+    width: 100%;
+}
+.teacher--header .teacher--left {
+    width: 20%;
+}
+.teacher--header .teacher--right {
+    width: 80%;
+}
+.teacher--header .teacher--right .teacher--txt {
+    font-family: 'Circe-Regular';
+    font-size: 16px;
+    color: #000;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+.teacher--header .teacher--left .teacher--title {
+    font-family: 'Circe-Bold';
+    font-size: 18px;
+    color: #000;
 }

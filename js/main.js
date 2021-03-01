@@ -32,4 +32,13 @@ $(document).ready(function() {
             scrollTop: top
         }, 700);
     });
+//  При нажатии на кнопку "Получить консультацию":
+    $('.get--info--btn').click(function() {
+        $('.modal--form').addClass('active');
+        $('body').css('overflow', 'hidden');
+    });
+    $('.close--btn').click(function() {
+        $('.modal--form').removeClass('active');
+        $('body').css('overflow', 'auto');
+    });
 });
